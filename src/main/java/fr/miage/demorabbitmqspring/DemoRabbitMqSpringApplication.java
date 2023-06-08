@@ -13,35 +13,7 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class DemoRabbitMqSpringApplication {
 
-    static final String topicExchangeName = "topic_logs";
-
-    static final String queueName = "spring-boot";
-    static final String queueNameSpecific = "spring-boot-specific";
-
-    @Bean
-    Queue queue() {
-        return new Queue(queueName, false);
-    }
-
-    @Bean
-    Queue appQueueSpecific() {
-        return new Queue(queueNameSpecific, false);
-    }
-
-    @Bean
-    TopicExchange exchange() {
-        return new TopicExchange(topicExchangeName);
-    }
-
-    @Bean
-    Binding binding(Queue queue, TopicExchange exchange) {
-        return BindingBuilder.bind(queue).to(exchange).with("foo.bar.#");
-    }
-
-    @Bean
-    public Binding declareBindingSpecific(Queue appQueueSpecific, TopicExchange exchange) {
-        return BindingBuilder.bind(appQueueSpecific).to(exchange).with("foo.bar.#");
-    }
+    static final String topicExchangeName = "bourse_headers";
 
     @Bean
     public RabbitTemplate rabbitTemplate(final ConnectionFactory connectionFactory) {

@@ -15,21 +15,26 @@ public class Sender implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        final var message = new CustomMessage("Hello there!", 50, false);
-        System.out.println("Sending message...");
-        template.convertAndSend(DemoRabbitMqSpringApplication.topicExchangeName, "foo.bar.baz", message);
+        TitreBoursier google = new TitreBoursier("GOOG", "Google Inc.", 391.03f, 0.0f);
+        TitreBoursier microsoft = new TitreBoursier("MSFT", "Microsoft Corp.", 25.79f, 0.0f);
 
-        System.out.println("Sending message...");
-        template.convertAndSend(DemoRabbitMqSpringApplication.topicExchangeName, "foo.bar.baz", message, m -> {
-            m.getMessageProperties().setHeader("bar", "baz");
-            return m;
-        });
+        for(int i=0; i<100; i++) {
+            float variation = (float)Math.random() * 20.0f - 10.0f;
+            google.setVariation(variation);
+            sendMessage(google);
+            System.out.println("Publication de "+google);
+            variation = (float)Math.random() * 20.0f - 10.0f;
+            microsoft.setVariation(variation);
+            sendMessage(microsoft);
+            System.out.println("Publication de "+microsoft);
+            Thread.sleep(1000);
+        }
 
     }
 
-    public void sendMessage(CustomMessage customMessage, String routingKey, String bar) {
-        template.convertAndSend(DemoRabbitMqSpringApplication.topicExchangeName, routingKey, customMessage, m -> {
-            m.getMessageProperties().setHeader("bar", bar);
+    public void sendMessage(TitreBoursier titreBoursier) {
+        template.convertAndSend(DemoRabbitMqSpringApplication.topicExchangeName, "", titreBoursier, m -> {
+            m.getMessageProperties().setHeader(titreBoursier.getMnemo(), "TRUE");
             System.out.println("Message : "+m);
             return m;
         });
