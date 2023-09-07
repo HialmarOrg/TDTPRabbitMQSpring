@@ -18,23 +18,34 @@ public class Sender implements CommandLineRunner {
         TitreBoursier google = new TitreBoursier("GOOG", "Google Inc.", 391.03f, 0.0f);
         TitreBoursier microsoft = new TitreBoursier("MSFT", "Microsoft Corp.", 25.79f, 0.0f);
 
+        float variation = 0.0f;
+        google.setVariation(variation);
+        sendMessage(google, OperationType.CREATE);
+        System.out.println("Publication de "+google);
+        variation = (float)Math.random() * 20.0f - 10.0f;
+        microsoft.setVariation(variation);
+        sendMessage(microsoft, OperationType.CREATE);
+        System.out.println("Publication de "+microsoft);
+        Thread.sleep(1000);
+
         for(int i=0; i<100; i++) {
-            float variation = (float)Math.random() * 20.0f - 10.0f;
+            variation = (float)Math.random() * 20.0f - 10.0f;
             google.setVariation(variation);
-            sendMessage(google);
+            sendMessage(google, OperationType.UPDATE);
             System.out.println("Publication de "+google);
             variation = (float)Math.random() * 20.0f - 10.0f;
             microsoft.setVariation(variation);
-            sendMessage(microsoft);
+            sendMessage(microsoft, OperationType.UPDATE);
             System.out.println("Publication de "+microsoft);
             Thread.sleep(1000);
         }
 
     }
 
-    public void sendMessage(TitreBoursier titreBoursier) {
+    public void sendMessage(TitreBoursier titreBoursier, OperationType operationType) {
         template.convertAndSend(DemoRabbitMqSpringApplication.topicExchangeName, "", titreBoursier, m -> {
             m.getMessageProperties().setHeader(titreBoursier.getMnemo(), "TRUE");
+            m.getMessageProperties().setHeader("OP", operationType.name());
             System.out.println("Message : "+m);
             return m;
         });
