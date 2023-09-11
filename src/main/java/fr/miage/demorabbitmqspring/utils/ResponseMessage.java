@@ -1,4 +1,4 @@
-package fr.miage.demorabbitmqspring;
+package fr.miage.demorabbitmqspring.utils;
 
 public class ResponseMessage {
     private String status;

@@ -1,5 +1,8 @@
-package fr.miage.demorabbitmqspring;
+package fr.miage.demorabbitmqspring.amqp;
 
+import fr.miage.demorabbitmqspring.DemoRabbitMqSpringApplication;
+import fr.miage.demorabbitmqspring.models.TitreBoursier;
+import fr.miage.demorabbitmqspring.models.OperationType;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;

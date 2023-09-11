@@ -13,12 +13,12 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class DemoRabbitMqSpringApplication {
 
-    static final String headersExchangeName = "bourse_headers";
+    static public final String headersExchangeName = "bourse_headers";
 
-    static final String headersExchangeQueueName = "bourse_headers_queue";
+    static public final String headersExchangeQueueName = "bourse_headers_queue";
 
-    static final String rpcQueueName = "bourse_rpc";
-    static final String rpcResponseQueueName = "bourse_rpc_response";
+    static public final String rpcQueueName = "bourse_rpc";
+    static public final String rpcResponseQueueName = "bourse_rpc_response";
 
     @Bean
     public RabbitTemplate rabbitTemplate(final ConnectionFactory connectionFactory) {

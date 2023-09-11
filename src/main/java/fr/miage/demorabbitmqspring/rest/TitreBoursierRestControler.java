@@ -1,5 +1,9 @@
-package fr.miage.demorabbitmqspring;
+package fr.miage.demorabbitmqspring.rest;
 
+import fr.miage.demorabbitmqspring.amqp.Sender;
+import fr.miage.demorabbitmqspring.models.TitreBoursier;
+import fr.miage.demorabbitmqspring.models.TitreBoursierCache;
+import fr.miage.demorabbitmqspring.models.OperationType;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

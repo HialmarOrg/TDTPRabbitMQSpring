@@ -1,6 +1,9 @@
-package fr.miage.demorabbitmqspring;
+package fr.miage.demorabbitmqspring.amqp;
 
-import org.springframework.amqp.core.ExchangeTypes;
+import fr.miage.demorabbitmqspring.DemoRabbitMqSpringApplication;
+import fr.miage.demorabbitmqspring.models.TitreBoursierCache;
+import fr.miage.demorabbitmqspring.models.TitreBoursier;
+import fr.miage.demorabbitmqspring.utils.ResponseMessage;
 import org.springframework.amqp.rabbit.annotation.*;
 import org.springframework.messaging.handler.annotation.Headers;
 import org.springframework.stereotype.Service;

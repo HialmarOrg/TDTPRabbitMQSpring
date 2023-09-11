@@ -1,4 +1,4 @@
-package fr.miage.demorabbitmqspring;
+package fr.miage.demorabbitmqspring.models;
 
 public enum OperationType {
     CREATE,

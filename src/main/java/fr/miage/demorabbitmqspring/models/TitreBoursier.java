@@ -1,4 +1,4 @@
-package fr.miage.demorabbitmqspring;
+package fr.miage.demorabbitmqspring.models;
 
 public class TitreBoursier {
     private String mnemo;
@@ -38,7 +38,6 @@ public class TitreBoursier {
 
     public void setVariation(float variation) {
         this.variation = variation;
-        cours += variation;
     }
 
 }

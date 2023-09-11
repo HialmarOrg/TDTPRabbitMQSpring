@@ -1,5 +1,6 @@
-package fr.miage.demorabbitmqspring;
+package fr.miage.demorabbitmqspring.models;
 
+import fr.miage.demorabbitmqspring.models.TitreBoursier;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
