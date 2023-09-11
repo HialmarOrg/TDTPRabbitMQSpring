@@ -21,13 +21,13 @@ public class TitreBoursierRestControler {
         System.out.println("Post de "+titreBoursier);
         sender.sendMessage(titreBoursier, OperationType.CREATE);
         System.out.println("Sent...");
-        return new ResponseEntity("{\"status\":\"In progress\"}", HttpStatus.ACCEPTED);
+        return new ResponseEntity("{\"status\":\"In progress\"}", HttpStatus.CREATED);
     }
 
     @PutMapping("/{mnemonic}")
     public ResponseEntity<String> updateTitreBoursier(@PathVariable("mnemonic") String mnemonic, @RequestBody TitreBoursier titreBoursier) {
-        System.out.println("Put de "+titreBoursier);
-        if(mnemonic != titreBoursier.getMnemo()) {
+        System.out.println("Put sur "+mnemonic+" de "+titreBoursier);
+        if(!mnemonic.equalsIgnoreCase(titreBoursier.getMnemo())) {
             return new ResponseEntity("{\"status\":\"The mnemonics do not match\"}", HttpStatus.BAD_REQUEST);
         } else {
             sender.sendMessage(titreBoursier, OperationType.UPDATE);
