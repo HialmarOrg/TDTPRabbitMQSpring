@@ -30,6 +30,8 @@ public class TitreBoursierRestControler {
 
     /**
      * Création d'un titre boursier
+     * POST sur http://localhost:8080/api/bourse
+     * {"mnemo":"GOG","nomComplet":"Good Old Games","cours":95.56439,"variation":0}
      * @param titreBoursier : titre à créer
      * @return l'entité réponse
      */
@@ -45,6 +47,8 @@ public class TitreBoursierRestControler {
 
     /**
      * Mise à jour d'un titre
+     * PUT sur http://localhost:8080/api/bourse/GOG
+     * {"mnemo":"GOG","nomComplet":"Good Old Games","cours":195.56439,"variation":0}
      * @param mnemonic : mnémonique du titre
      * @param titreBoursier : le titre
      * @return l'entité réponse
@@ -68,6 +72,7 @@ public class TitreBoursierRestControler {
 
     /**
      * Suppression d'un titre
+     * DELETE sur http://localhost:8080/api/bourse/GOG
      * @param mnemonic : le mnémonique du titre
      * @return l'entité réponse
      */
@@ -83,6 +88,7 @@ public class TitreBoursierRestControler {
 
     /**
      * Récupération d'un titre
+     * GET sur http://localhost:8080/api/bourse/GOG
      * @param mnemonic : le mnémonique du titre
      * @return l'entité réponse
      */
