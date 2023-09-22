@@ -2,6 +2,7 @@ package fr.miage.demorabbitmqspring.models;
 
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
 import java.util.HashMap;
 /**
  * Service gérant le cache local des titres
@@ -26,6 +27,16 @@ public class TitreBoursierCache {
     public TitreBoursier getFromCache(String mnemonic) {
         return cache.get(mnemonic);
     }
+
+    /**
+     * Retourne la liste des titres
+     *
+     * @return : la liste des titres (peut être vide)
+     */
+    public Collection<TitreBoursier> getListeTitres() {
+        return cache.values();
+    }
+
 
     /**
      * Permet la suppression d'un titre

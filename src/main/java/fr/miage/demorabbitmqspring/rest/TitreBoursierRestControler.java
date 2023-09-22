@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collection;
+
 /**
  * Contrôleur REST pour les titres boursiers
  */
@@ -103,6 +105,19 @@ public class TitreBoursierRestControler {
             // il y est, on le retourne au client
             return new ResponseEntity<>(titreBoursier, HttpStatus.OK);
         }
+    }
+
+    /**
+     * Récupération de la liste des titres
+     * GET sur http://localhost:8080/api/bourse
+     * @return l'entité réponse
+     */
+    @GetMapping
+    public ResponseEntity<Collection<TitreBoursier>> getListeTitresBoursiers() {
+        // On récupère la liste des titres dans le cache
+        Collection<TitreBoursier> liste = titreBoursierCache.getListeTitres();
+        // on la retourne au client
+        return new ResponseEntity<>(liste, HttpStatus.OK);
     }
 }
 
