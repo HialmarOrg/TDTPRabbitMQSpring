@@ -78,7 +78,7 @@ public class TitreBoursierRestControler {
      */
     @DeleteMapping("/{mnemonic}")
     public ResponseEntity<String> deleteTitreBoursier(@PathVariable("mnemonic") String mnemonic) {
-        TitreBoursier titreBoursier = new TitreBoursier(mnemonic, "",0.0f,0.0f);
+        TitreBoursier titreBoursier = new TitreBoursier(mnemonic, "",0.0f,"",0.0f,0.0f);
         // on envoie la demande au serveur
         sender.sendMessage(titreBoursier, OperationType.DELETE);
         System.out.println("Sent...");
@@ -102,6 +102,24 @@ public class TitreBoursierRestControler {
         } else {
             // il y est, on le retourne au client
             return new ResponseEntity<>(titreBoursier, HttpStatus.OK);
+        }
+    }
+
+    /**
+     * Récupération de tous les mnémoniques des titres
+     * GET sur http://localhost:8080/api/bourse
+     * @return l'entité réponse
+     */
+    @GetMapping
+    public ResponseEntity<String[]> getAllTitreBoursier() {
+        // On tente de récupérer les titres dans le cache
+        String[] titresBoursiers = titreBoursierCache.getAllFromCache();
+        if (titresBoursiers == null) {
+            // il n'y en a aucun
+            return new ResponseEntity<>(new String[0], HttpStatus.NOT_FOUND);
+        } else {
+            // il y en a, on les retourne au client
+            return new ResponseEntity<>(titresBoursiers, HttpStatus.OK);
         }
     }
 }
