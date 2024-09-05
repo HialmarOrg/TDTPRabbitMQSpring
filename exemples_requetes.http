@@ -1,0 +1,52 @@
+
+###
+GET http://localhost:8080/api/bourse
+
+<> 2024-09-05T154238.200.json
+<> 2024-09-05T151812.200.json
+<> 2024-09-05T151752.200.json
+<> 2024-09-05T151715.404.json
+<> 2024-09-05T151711.404.json
+<> 2024-09-05T151431.404.json
+
+###
+POST http://localhost:8080/api/bourse
+Content-Type: application/json
+
+{"mnemo":"GOG","nomComplet":"Good Old Games","valeur":95.56439,"uniteValeur":"Euros","variation":0,"variationPourcent":0}
+
+<> 2024-09-05T154214.201.txt
+<> 2024-09-05T154038.201.txt
+<> 2024-09-05T153705.201.txt
+<> 2024-09-05T153629.201.txt
+<> 2024-09-05T151806.201.txt
+<> 2024-09-05T151704.201.txt
+
+###
+PUT http://localhost:8080/api/bourse/GOG
+Content-Type: application/json
+
+{"mnemo":"GOG","nomComplet":"Good Old Games","valeur":195.56439,"uniteValeur":"Euros","variation":0,"variationPourcent":0}
+
+<> 2024-09-05T154222.202.txt
+<> 2024-09-05T154042.202.txt
+<> 2024-09-05T153746.202.txt
+<> 2024-09-05T153733.202.txt
+<> 2024-09-05T153711.400.txt
+<> 2024-09-05T153638.202.txt
+<> 2024-09-05T153058.202.txt
+<> 2024-09-05T152728.400.json
+<> 2024-09-05T152613.400.json
+<> 2024-09-05T152505.400.json
+
+###
+DELETE http://localhost:8080/api/bourse/GOG
+
+<> 2024-09-05T154112.202.txt
+
+###
+GET http://localhost:8080/api/bourse/GOG
+
+<> 2024-09-05T154225.200.json
+<> 2024-09-05T154218.200.json
+<> 2024-09-05T154141.404.json
